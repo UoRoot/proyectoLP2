@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import es.diplock.examples.entities.Subcategory;
 
 @Repository
-public interface SubcategoryRepository extends JpaRepository<Subcategory, Integer>{
+public interface SubcategoryRepository extends JpaRepository<Subcategory, Integer> {
     
 }

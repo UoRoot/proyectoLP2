@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
 <head>
-    <title>Acerca de</title>
+    <title>Inicio</title>
 </head>
 <body>
-
-    <div th:replace="fragments/header :: header"></div>
     <main layout:fragment="content">
-        <h1>Acerca de Nosotros</h1>
-        <p>Esta es la página "Acerca de" de Mi Sitio.</p>
+        <h1>Bienvenido a Mi Sitio</h1>
+        <p>Este es el contenido específico de la página de inicio.</p>
     </main>
 </body>
 </html>

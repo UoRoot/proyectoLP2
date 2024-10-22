@@ -1,4 +1,4 @@
-package es.diplock.examples.dtos;
+package es.diplock.examples.dtos.subcategory;
 
 public record SubcategoryDTO(
                 Integer id,
