@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/layout}">
+
+<head>
+  <title>Crud</title>
+</head>
+<body>
+    <div layout:fragment="content" class="container mt-4">
+        <h2>Add New Product</h2>
+        <form th:action="@{/productos}" th:object="${saveProductDTO}" method="post" class="needs-validation" novalidate>
+            <!-- Name -->
+            <div class="form-group mb-3">
+                <label for="name">Product Name</label>
+                <input type="text" class="form-control" id="name" th:field="*{name}" 
+                       minlength="3" maxlength="100" required>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+                    Name error message
+                </div>
+            </div>
+    
+            <!-- Description -->
+            <div class="form-group mb-3">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" th:field="*{description}" rows="3"></textarea>
+            </div>
+    
+            <!-- Image URL -->
+            <div class="form-group mb-3">
+                <label for="imageUrl">Image URL</label>
+                <input type="url" class="form-control" id="imageUrl" th:field="*{imageUrl}">
+            </div>
+    
+            <!-- Price -->
+            <div class="form-group mb-3">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" th:field="*{price}" 
+                       step="0.01" min="0.01" required>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">
+                    Price error message
+                </div>
+            </div>
+    
+            <!-- Stock Quantity -->
+            <div class="form-group mb-3">
+                <label for="stockQuantity">Stock Quantity</label>
+                <input type="number" class="form-control" id="stockQuantity" th:field="*{stockQuantity}" 
+                       min="0" max="999" required>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('stockQuantity')}" th:errors="*{stockQuantity}">
+                    Stock quantity error message
+                </div>
+            </div>
+    
+            <!-- Gender -->
+            <div class="form-group mb-3">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" th:field="*{gender}" required>
+                    <option value="">Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Unisex">Unisex</option>
+                </select>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">
+                    Gender error message
+                </div>
+            </div>
+    
+            <!-- Sizes -->
+            <div class="form-group mb-3">
+                <label>Sizes</label>
+                <div class="form-check" th:each="size : ${sizes}">
+                    <input class="form-check-input" type="checkbox" 
+                           th:field="*{sizesIds}" th:value="${size.id}">
+                    <label class="form-check-label" th:text="${size.name}">Size name</label>
+                </div>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('sizesIds')}" th:errors="*{sizesIds}">
+                    Sizes error message
+                </div>
+            </div>
+    
+            <!-- Colors -->
+            <div class="form-group mb-3">
+                <label>Colors</label>
+                <div class="form-check" th:each="color : ${colors}">
+                    <input class="form-check-input" type="checkbox" 
+                           th:field="*{colorsIds}" th:value="${color.id}">
+                    <label class="form-check-label" th:text="${color.name}">Color name</label>
+                </div>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('colorsIds')}" th:errors="*{colorsIds}">
+                    Colors error message
+                </div>
+            </div>
+    
+            <!-- Subcategory -->
+            <div class="form-group mb-3">
+                <label for="subcategoryId">Subcategory</label>
+                <select class="form-control" id="subcategoryId" th:field="*{subcategoryId}" required>
+                    <option value="">Select subcategory</option>
+                    <option th:each="subcategory : ${subcategories}" 
+                            th:value="${subcategory.id}" 
+                            th:text="${subcategory.name}">Subcategory name</option>
+                </select>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('subcategoryId')}" th:errors="*{subcategoryId}">
+                    Subcategory error message
+                </div>
+            </div>
+    
+            <!-- Brand -->
+            <div class="form-group mb-3">
+                <label for="brandId">Brand</label>
+                <select class="form-control" id="brandId" th:field="*{brandId}" required>
+                    <option value="">Select brand</option>
+                    <option th:each="brand : ${brands}" 
+                            th:value="${brand.id}" 
+                            th:text="${brand.name}">Brand name</option>
+                </select>
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('brandId')}" th:errors="*{brandId}">
+                    Brand error message
+                </div>
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Save Product</button>
+        </form>
+    </div>
+</body>

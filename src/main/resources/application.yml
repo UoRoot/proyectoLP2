@@ -5,7 +5,7 @@ spring:
     name: examples
   datasource:
     url: ${DB_URL}
-    driverClassName: org.h2.Driver
+    driverClassName: com.mysql.jdbc.Driver
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   # h2:
@@ -15,7 +15,7 @@ spring:
   jpa:
     # database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
     properties:
       hibernate:
