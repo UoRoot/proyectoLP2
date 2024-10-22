@@ -34,7 +34,7 @@ build/
 
 ### local files ###
 .sdkmanrc
-/scripts
+# /scripts
 methods.http
 
 ## ignorando archivos por ahora
