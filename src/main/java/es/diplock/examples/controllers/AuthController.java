@@ -46,6 +46,13 @@ public class AuthController {
         // Guardar usuario en sesión
         session.setAttribute("authenticatedUser", authenticatedUser);
         
+        // Redireccionar a la URL original o a /admin por defecto
+        String redirectUrl = (String) session.getAttribute("redirectUrl");
+        if (redirectUrl != null) {
+            session.removeAttribute("redirectUrl");
+            return "redirect:" + redirectUrl;
+        }
+        
         return "redirect:/admin";
     }
     

@@ -28,6 +28,11 @@ public class AdminController {
     private final SubcategoryRepository subcategoryRepository;
     private final BrandRepository brandRepository;
 
+    @GetMapping
+    public String getAdminPage() {
+        return "pages/admin";
+    }
+    
     
     @GetMapping("/productos")
     public String getProductsPage() {
